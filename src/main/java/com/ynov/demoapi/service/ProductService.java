@@ -9,9 +9,9 @@ public class ProductService {
     public ProductModel createNewRandomProduct()
     {
         ProductModel p = new ProductModel();
-        p.setName("random product");
-        p.setDescription("Un Produit");
-        p.setCost(20);
+        p.setName("name");
+        p.setDescription("description");
+        p.setCost(1);
 
         return p;
     }
