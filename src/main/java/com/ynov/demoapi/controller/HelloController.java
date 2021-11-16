@@ -20,4 +20,7 @@ public class HelloController {
 
     @PostMapping("/helloworld")
     public void postHelloWorld(@RequestBody String str){ logger.info("Received : " + str);}
+
+    @DeleteMapping("/helloworld/{id}")
+    public void deleteHelloWorld(@PathVariable("id") Integer id){ logger.info("deleteHelloWorld endpoint called for id : " + id);}
 }
