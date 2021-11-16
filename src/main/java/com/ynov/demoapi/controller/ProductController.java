@@ -1,8 +1,10 @@
 package com.ynov.demoapi.controller;
 
 import com.ynov.demoapi.model.ProductModel;
+import com.ynov.demoapi.service.ProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -10,6 +12,9 @@ import java.util.List;
 
 @RestController
 public class ProductController {
+
+    @Autowired
+    private ProductService service;
 
     Logger logger = LoggerFactory.getLogger(ProductController.class);
 
@@ -27,19 +32,10 @@ public class ProductController {
 
     @GetMapping("/product")
     public List<ProductModel> getProducts(){
-        ProductModel p1 = new ProductModel();
-        p1.setName("name1");
-        p1.setDescription("description1");
-        p1.setCost(1);
-
-        ProductModel p2 = new ProductModel();
-        p2.setName("name2");
-        p2.setDescription("description2");
-        p2.setCost(2);
 
         List<ProductModel> list = new ArrayList<>();
-        list.add(p1);
-        list.add(p2);
+        list.add(service.createNewRandomProduct());
+        list.add(service.createNewRandomProduct());
 
         return list;
     }
